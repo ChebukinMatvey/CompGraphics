@@ -2,7 +2,7 @@ package main.java.engine.objects;
 
 import java.io.IOException;
 
-import main.java.engine.imageOperations.ColorCorrection;
+import main.java.engine.imageOperations.*;
 import main.java.logger.*;
 
 public class TempMain {
@@ -10,6 +10,8 @@ public class TempMain {
 	public static void main(String[] args) {
 		String src="D:\\test.png";
 		String dest="D:\\dest.png";
+		
+		
 		
 		Image srcImg = null;
 		Image destImg = null;
@@ -21,8 +23,9 @@ public class TempMain {
 		}
 		
 		
-		ColorCorrection.doCorrection(srcImg, destImg);
+		Operation op=new ColorCorrection(srcImg, destImg);
 		
+		op.doOperation();
 		
 		destImg.saveToFile(dest, "PNG");
 		
