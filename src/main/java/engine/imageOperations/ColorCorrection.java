@@ -1,31 +1,51 @@
 package main.java.engine.imageOperations;
 
+import java.io.IOException;
+
 import main.java.engine.objects.Chanel;
-import main.java.engine.objects.Color;
+import main.java.engine.objects.Pixel;
+import main.java.logger.Logger;
+import main.java.logger.MassegeLevel;
 import main.java.engine.objects.Image;
 
 
-// Статистическая цветокоррекция 
-public class ColorCorrection {
+// Statistical color correction 
+public class ColorCorrection implements Operation {
 
-	private static double getMean(Image img,int index) {
+	private Image src;
+	private Image dest;
+	
+	
+	public ColorCorrection(Image src,Image dest) {
+		this.src=src;
+		this.dest=dest;
+	}
+	
+	
+	private  double getMean(Image img,int chanel) {
 		double mean=0;
-		long  n=img.colorCount();
-		for(Color c:img.getColors())
-			mean+=c.getColorByIndex(index);
+		long  n=img.pixelsCount();
+		for(Pixel c:img.getPixels())
+			mean+=c.getPixelColorByChanel(chanel);
 		return mean / n ;
 	}
 	
-	private static double getDispersion(Image img,int index,double mean) {
+	private double getDispersion(Image img,int chanel,double mean) {
 		double dispersion=0;
-		long  n=img.colorCount();
-		for(Color c:img.getColors())
-			dispersion+=Math.pow((c.getColorByIndex(index) - mean), 2);
+		long  n=img.pixelsCount();
+		for(Pixel c:img.getPixels())
+			dispersion+=Math.pow((c.getPixelColorByChanel(chanel) - mean), 2);
 		return Math.sqrt(dispersion/n);
 	}
 	
-	public static void doCorrection(Image src,Image dest) {
-		
+	
+	public Image doOperation() {
+		Image result=null;
+		try {
+			result = new Image(dest.getImagePath());
+		} catch (IOException e) {
+			Logger.printMassege("Exception trying to copy dest img in collor transfer operation:" + e.getMessage(), MassegeLevel.Error);
+		}
 		
 		double srcRedMean=getMean(src, Chanel.Red);
 		double srcGreenMean=getMean(src, Chanel.Green);
@@ -42,19 +62,23 @@ public class ColorCorrection {
 		double destRedDispersion=getDispersion(dest, Chanel.Red, destRedMean);
 		double destGreenDispersion=getDispersion(dest, Chanel.Green, destGreenMean);
 		double destBlueDispersion=getDispersion(dest, Chanel.Blue, destBlueMean);
-		
-		for(int i=0;i<dest.colorCount();i++){
-			dest.getColors()[i].setR(getValue(dest.getColors()[i].getR() ,srcRedMean,  srcRedDispersion, destRedMean,destRedDispersion));
-			dest.getColors()[i].setG(getValue(dest.getColors()[i].getG() , srcGreenMean,  srcGreenDispersion, destGreenMean,destGreenDispersion));
-			dest.getColors()[i].setB(getValue(dest.getColors()[i].getB() , srcBlueMean,  srcBlueDispersion, destBlueMean,destBlueDispersion));
+				
+		for(int i=0;i<dest.pixelsCount();i++){
+			result.getPixels()[i].setR(getValue(dest.getPixels()[i].getR() ,srcRedMean,  srcRedDispersion, destRedMean,destRedDispersion));
+			result.getPixels()[i].setG(getValue(dest.getPixels()[i].getG() , srcGreenMean,  srcGreenDispersion, destGreenMean,destGreenDispersion));
+			result.getPixels()[i].setB(getValue(dest.getPixels()[i].getB() , srcBlueMean,  srcBlueDispersion, destBlueMean,destBlueDispersion));
 		}
+		return result;
 	}
 
-	private static short getValue(int color,double srcMean, double srcDispersion, double destMean, double destDispersion) {
-		double newColor=(srcMean+(color-destMean)*srcDispersion/destDispersion);
-		return (short)newColor;
-	}
 	
+	
+	private int getValue(int color,double srcMean, double srcDispersion, double destMean, double destDispersion) {
+		double newColor=(srcMean+(color-destMean)*srcDispersion/destDispersion);
+		return (int) Math.abs(newColor);
+	}
+
+		
 	
 	
 	
