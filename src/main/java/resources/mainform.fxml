@@ -2,11 +2,30 @@
 
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="813.0" prefWidth="1219.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="loadImageButton" layoutX="675.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#loadImageButtomClicked" prefHeight="39.0" prefWidth="153.0" text="Button" />
-      <Canvas fx:id="imageCanvas" height="434.0" layoutX="14.0" layoutY="14.0" width="613.0" />
+      <Button fx:id="loadFirstImageButton" layoutX="625.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#loadFirstImageButtomClicked" prefHeight="26.0" prefWidth="103.0" text="Load file" />
+      <Label layoutX="45.0" layoutY="28.0" prefHeight="26.0" prefWidth="85.0" style="-fx-border-radius: 2px;" text="First image" textAlignment="CENTER" AnchorPane.leftAnchor="45.0">
+         <font>
+            <Font name="Leelawadee UI" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstTextPath" editable="false" layoutX="163.0" layoutY="29.0" prefHeight="25.0" prefWidth="438.0" />
+      <Button fx:id="loadSecondImageButton" layoutX="625.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#loadSecondImageButtomClicked" prefHeight="26.0" prefWidth="103.0" text="Load file" />
+      <TextField fx:id="secondTextPath" editable="false" layoutX="163.0" layoutY="81.0" prefHeight="25.0" prefWidth="438.0" />
+      <Label layoutX="45.0" layoutY="80.0" prefHeight="26.0" prefWidth="103.0" style="-fx-border-radius: 2px;" text="Second image" textAlignment="CENTER">
+         <font>
+            <Font name="Leelawadee UI" size="14.0" />
+         </font>
+      </Label>
+      <Canvas fx:id="resultCanvas" height="673.0" layoutX="27.0" layoutY="121.0" width="1167.0" />
+      <Button fx:id="showResultButton" layoutX="933.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#showResultButtonClicked" prefHeight="47.0" prefWidth="132.0" text="Show result" visible="false" />
+      <Button fx:id="showFirstImageButton" layoutX="747.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#showFirstImageButtonClicked" text="Show" visible="false" />
+      <Button fx:id="showSecondImageButton" layoutX="747.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#showSecondImageButtonClicked" text="Show" visible="false" />
    </children>
 </AnchorPane>

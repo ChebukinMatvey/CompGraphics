@@ -31,10 +31,10 @@ public class MainApplication extends Application {
 		FXMLLoader loader = new FXMLLoader();
 		String path="src/main/java/resources/mainform.fxml";
 		InputStream is=new FileInputStream(path);
-		loader.setController(new MainFormController());
+		loader.setController(new MainFormController(primaryStage));
 		AnchorPane root=loader.load(is);
 		
-		Scene scene= new Scene(root,500,600);
+		Scene scene= new Scene(root,root.getPrefWidth(),root.getPrefHeight());
 		
 		primaryStage.setScene(scene);
 		

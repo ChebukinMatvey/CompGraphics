@@ -2,6 +2,7 @@ package main.java.engine.imageOperations;
 
 import java.io.IOException;
 
+import javafx.scene.image.WritableImage;
 import main.java.engine.objects.Chanel;
 import main.java.engine.objects.Pixel;
 import main.java.logger.Logger;
@@ -39,7 +40,7 @@ public class ColorCorrection implements Operation {
 	}
 	
 	
-	public Image doOperation() {
+	public WritableImage doOperation() {
 		Image result=null;
 		try {
 			result = new Image(dest.getImagePath());
@@ -68,7 +69,7 @@ public class ColorCorrection implements Operation {
 			result.getPixels()[i].setG(getValue(dest.getPixels()[i].getG() , srcGreenMean,  srcGreenDispersion, destGreenMean,destGreenDispersion));
 			result.getPixels()[i].setB(getValue(dest.getPixels()[i].getB() , srcBlueMean,  srcBlueDispersion, destBlueMean,destBlueDispersion));
 		}
-		return result;
+		return result.setPixels();
 	}
 
 	

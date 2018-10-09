@@ -18,6 +18,6 @@ public class TempMain {
 		destImg=new Image(dest);
 		//new Image(dest).saveToFile("D:/newfile.png", "PNG");
 		Operation op=new ColorCorrection(srcImg, destImg);
-		op.doOperation().saveToFile("D:/newfile.png", "PNG");
+		//op.doOperation().saveToFile("D:/newfile.png", "PNG");
 	}
 }

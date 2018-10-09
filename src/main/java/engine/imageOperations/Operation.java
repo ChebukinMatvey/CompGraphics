@@ -1,6 +1,6 @@
 package main.java.engine.imageOperations;
 
-import main.java.engine.objects.Image;
+import javafx.scene.image.Image;
 
 public interface Operation {
 

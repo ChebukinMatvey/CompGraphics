@@ -46,7 +46,6 @@ public class Image extends javafx.scene.image.Image {
 		pixels=new Pixel[w*h];
 		int argb=0;
 		PixelReader pxReader=getPixelReader();
-		System.out.println(pxReader.getPixelFormat().toString());
 		for(int i=0;i<h;i++)
 			for(int j=0;j<w;j++){
 				argb=pxReader.getArgb(j, i);
@@ -72,7 +71,7 @@ public class Image extends javafx.scene.image.Image {
 		ImageIO.write(SwingFXUtils.fromFXImage(img, null), format, new FileOutputStream(out));
 	}
 
-	private WritableImage setPixels() {
+	public WritableImage setPixels() {
 		int w=(int) getWidth();
 		int h=(int) getHeight();
 		int pixelIndex=0;
@@ -92,6 +91,8 @@ public class Image extends javafx.scene.image.Image {
 	public void setPixels(Pixel[] pixs) {
 		this.pixels=pixs;
 	}
+
+
 	
 	
 	
