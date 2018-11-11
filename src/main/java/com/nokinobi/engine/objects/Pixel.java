@@ -1,7 +1,8 @@
-package main.java.engine.objects;
+package com.nokinobi.engine.objects;
 
-import main.java.logger.Logger;
-import main.java.logger.MassegeLevel;
+
+import com.nokinobi.engine.logger.Logger;
+import com.nokinobi.engine.logger.MassegeLevel;
 
 public class Pixel {
 	private int R,G,B;

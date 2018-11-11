@@ -1,4 +1,4 @@
-package main.java.logger;
+package com.nokinobi.engine.logger;
 
 
 
@@ -9,7 +9,7 @@ public class Logger {
 		// to do levels
 		
 		
-		//  i can add another (normal) logic of logger any time 
+		//  i can add another (normal) logic of com.nokinobi.engine.logger any time
 		System.out.println(str);
 	}
 }

@@ -1,13 +1,11 @@
-package main.java.engine.imageOperations;
+package com.nokinobi.engine.imageOperations;
+
+import com.nokinobi.engine.logger.Logger;
+import com.nokinobi.engine.logger.MassegeLevel;
+import com.nokinobi.engine.objects.*;
+import javafx.scene.image.WritableImage;
 
 import java.io.IOException;
-
-import javafx.scene.image.WritableImage;
-import main.java.engine.objects.Chanel;
-import main.java.engine.objects.Pixel;
-import main.java.logger.Logger;
-import main.java.logger.MassegeLevel;
-import main.java.engine.objects.Image;
 
 
 // Statistical color correction 

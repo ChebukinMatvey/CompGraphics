@@ -1,10 +1,8 @@
-package main.java.engine.objects;
+package com.nokinobi.engine.objects;
 
 import java.io.IOException;
 
-import main.java.engine.imageOperations.*;
-import main.java.logger.*;
-
+import com.nokinobi.engine.imageOperations.*;
 public class TempMain {
 	
 	public static void main(String[] args) throws IOException {

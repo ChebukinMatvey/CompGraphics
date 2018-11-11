@@ -1,4 +1,4 @@
-package main.java.engine.objects;
+package com.nokinobi.engine.objects;
 
 
 // Constants of color 

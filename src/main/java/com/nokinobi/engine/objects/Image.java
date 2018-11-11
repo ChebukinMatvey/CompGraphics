@@ -1,4 +1,4 @@
-package main.java.engine.objects;
+package com.nokinobi.engine.objects;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package main.java.engine.imageOperations;
+package com.nokinobi.engine.imageOperations;
 
 import javafx.scene.image.Image;
 
